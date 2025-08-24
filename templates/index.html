@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}Главная - Магазин товаров{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <h1 class="mb-4">Добро пожаловать в наш магазин!</h1>
+        <p>Вы находитесь на сайте, предназначенном для продажи товаров.</p>
+    </div>
+</div>
+
+<div class="row mt-4">
+    {% for product in products %}
+    <div class="col-md-6 mb-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">{{ product[1] }}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">${{ product[2] }}</h6>
+                <p class="card-text">{{ product[3] }}</p>
+                <a href="{{ url_for('product', product_id=product[0]) }}" class="btn btn-primary">Купить</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
